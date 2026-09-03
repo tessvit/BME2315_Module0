@@ -2,6 +2,8 @@
 # As discussed in class, feel free to use AI tools to help you complete this assignment, but remember to cite them.
 # I encourage you to try the problems yourself first and only use AI tools when you are stuck to benefit your learning. 
 
+# Name: Tess Vithoulkas
+
 # %% ###########################################################
 # Problem 1: Practice writing pseudocode
 
@@ -11,37 +13,83 @@
 
 """ # you can use three double-quotes to write multi-line comments
 XXX Write your pseudocode here XXX
+
+set value1 equal to 0
+set value2 to 1
+set counter equal to 1
+set sum to 0
+
+get input integer n
+
+while counter variable is less than or equal to integer n
+    set sum equal to sum plus value1
+    set value3 equal to value1 plus value2
+    set value1 equal to value2
+    set value2 equal to value3
+    counter increases by 1
+return sum
+
+    
+
 """
 
 # %% ###########################################################
 # Problem 2: Comment your code
 # Comments are very helpful for others (especially when pair-coding!) and yourself to understand your code! Add comments to the following code, which will run but produces the wrong output. Once you comment the code, you should be able to identify the error and fix it (the correct total that should be printed is 12).
-N = 6
+N = 6 # user input- this is the number of times the loop should iterate
 
 a = 0 # set a to the first fibonacci number
 b = 1 # set b to the second fibonacci number
-count = 0
-total = 0
+count = 0 # keeps track of the number of times the loop has iterated through
+total = 0 # variable to hold the sum of the fibonacci numbers
 
-while count < N:
-    total = total + b
+while count < N: # iterates while the count is less than the value the user input
+    total = total + a # sum of the fibonacci numbers becomes the original sum plus the first fibonacci number-this had to be changed from b to a
 
-    next_value = a + b
-    a = b
-    b = next_value
+    next_value = a + b # the next fibonacci number value is the sum of the original two
+    a = b # the lower fibonacci number gets the value of the higher one
+    b = next_value # the higher fibonacci number gets the value of the next fibonacci number
 
-    count = count + 1
+    count = count + 1 # count increases since loop has been iterated through
 
-print(total)
+print(total) # sum is printed once the count is greater than the user input value
 
 # %% ###########################################################
 # Problem 3: Using common Python libraries
 # What is the standard deviation of the first 10 numbers in the fibonacci sequence? Use the numpy library to calculate the standard deviation.
 
+import numpy
+print(numpy.std([0,1,1,2,3,5,8,13,21,34]))
+
 # %% ###########################################################
 # Problem 4: Don't repeat yourself by writing functions
 # Write a function that takes an integer N as input and returns the sum of the first N numbers in the fibonacci sequence.
 # Then use this function to calculate the sums for N = 5, 10, 15, 20, 25, and 30 and print them as a list.
+
+fibSeqList = []
+
+def fibonacciSequence(n):
+    value1 = 0
+    value2 = 1
+    counter = 1
+    sum = 0
+
+    while(counter <= n):
+        sum += value1
+        value3 = value1 + value2
+        value1 = value2
+        value2 = value3
+        counter += 1
+    fibSeqList.append(sum)
+
+fibonacciSequence(5)
+fibonacciSequence(10)
+fibonacciSequence(15)
+fibonacciSequence(20)
+fibonacciSequence(25)
+fibonacciSequence(30)
+
+print(fibSeqList)
 
 # %% ###########################################################
 # Problem 5: Read your error messages
