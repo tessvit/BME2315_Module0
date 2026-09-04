@@ -108,16 +108,17 @@ def find_fib_above_limit(limit):
     :return: index of the first number above limit
     :rtype: integer
     """
-    a = "0"
-    b = "1"
+    a = 0 #changed this value from a string to an int to fix the error and make output correct
+    b = 1 #changed this value from a string to an int to fix the error and make output correct
+    index = 0 #had to add this definition outside the while loop so the variable could be returned outside the loop (set equal to 0 since the index of the first number in a list when coding is 0)
 
-    while a <= limit:
+    while a <= limit: #TypeError: Python can't compare strings and integers to see if they are equal (<= not supported between str and int)- make the strings (a and b) an int to solve this problem and make the output correct
         next_value = a + b
         a = b
         b = next_value
         index += 1
 
-    return index
+    return index #UnboundLocalError: Python can't access index variable since it was defined inside the while loop and we are calling it outside the loop- initiate variable outside loop to fix this
 
 
 result = find_fib_above_limit(50)
@@ -138,5 +139,5 @@ def sum_even_fib(limit):
 
 
 # Add your test cases here
-
+sum_even_fib(2)
 # %%
