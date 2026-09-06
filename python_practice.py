@@ -66,7 +66,7 @@ print(total) # sum is printed once the count is greater than the user input valu
 
 # What is the standard deviation of the first 10 numbers in the fibonacci sequence? Use the numpy library to calculate the standard deviation.
 
-import numpy
+import numpy # Imports numpy library for use of the standard deviation function (.std) used in next line
 print(numpy.std([0,1,1,2,3,5,8,13,21,34]))
 
 # %% ###########################################################
@@ -128,9 +128,9 @@ def find_fib_above_limit(limit):
     :return: index of the first number above limit
     :rtype: integer
     """
-    a = 0 #changed this value from a string to an int to fix the error and make output correct
-    b = 1 #changed this value from a string to an int to fix the error and make output correct
-    index = 0 #had to add this definition outside the while loop so the variable could be returned outside the loop (set equal to 0 since the index of the first number in a list when coding is 0)
+    a = 0 # Changed this value from a string to an int to fix the error and make output correct
+    b = 1 # Changed this value from a string to an int to fix the error and make output correct
+    index = 0 # Had to add this definition outside the while loop so the variable could be returned outside the loop (set equal to 0 since the index of the first number in a list when coding is 0)
 
     while a <= limit: #TypeError: Python can't compare strings and integers to see if they are equal (<= not supported between str and int)- make the strings (a and b) an int to solve this problem and make the output correct
         next_value = a + b
@@ -150,19 +150,23 @@ print("The index of the first number above your limit is: ", result)
 
 # The following function will run but will output the wrong answer sometimes. Add test cases to verify that the function works correctly for a variety of inputs. If you find any inputs that produce incorrect outputs, fix the function. The function, when working properly, should return the sum of all odd Fibonacci numbers less than or equal to the input "limit".
 
-#returns the sum of all odd fibonacci numbers less than or equal to the value input
-def sum_even_fib(limit):
-    a, b = 0, 1 #defines first two fibonacci numbers
-    total = 0 #sum
+# Returns the sum of all odd fibonacci numbers less than or equal to the value input (If 4 is input value, the returned value would be 5 (1+1+3))
+def sum_odd_fib(limit): # Changed function name to sum_odd_fib from sum_even_fib so it was representative of what the directions said
+    a, b = 0, 1 # Defines first two fibonacci numbers
+    total = 0 # Sum
 
-    #while loop determines if second fibonacci number is less than or equal to the number input
+    # While loop determines if second fibonacci number is less than or equal to the number input
     while b <= limit:
-        if b % 2 == 0:  # This line checks if the Fibonacci number is even
-            total = b  #if the fibonacci number is even, the total becomes that fibonacci number
-        a, b = b, a + b #updates fibonacci numbers- a becomes b and b becomes a+b
-    return total  #returns the sum
+        if b % 2 != 0:  # This line checks if the Fibonacci number is even -- had to make this does not equal, so if the number is odd it will add to the sum, not if it is even
+            total += b  # If the fibonacci number is odd, the total becomes the previous total plus the odd Fibonacci number
+        a, b = b, a + b # Updates fibonacci numbers- a becomes b and b becomes a+b
+    return total  # Returns the sum
 
 
-# Add your test cases here
-sum_even_fib(3)
+# Test cases
+print(sum_odd_fib(3))
+print(sum_odd_fib(10))
+print(sum_odd_fib(20))
+print(sum_odd_fib(30))
+print(sum_odd_fib(60))
 # %%
